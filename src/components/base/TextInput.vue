@@ -3,7 +3,6 @@ import { onMounted, ref, type Ref } from 'vue'
 
 defineProps({
   modelValue: {
-    type: String,
     required: true,
   },
 })
