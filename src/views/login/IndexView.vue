@@ -15,10 +15,14 @@ const form: Form = reactive({
   email: '',
   password: '',
 })
+
+const send = () => {
+  console.log(form)
+}
 </script>
 <template>
   <GuestLayout>
-    <form class="space-y-4">
+    <form @submit.prevent="send()" class="space-y-4">
       <div>
         <InputLabel>email</InputLabel>
         <TextInput type="email" class="mt-1 block w-full" v-model="form.email" />
