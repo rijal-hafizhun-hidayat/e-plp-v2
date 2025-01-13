@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginIndexView from '@/views/login/IndexView.vue'
 import DashboardIndexView from '@/views/dashboard/IndexView.vue'
-import RegisterIndexView from '@/views/register/IndexView.vue'
+import RegisterStudentView from '@/views/register/StudentView.vue'
+import RegisterDplView from '@/views/register/DplView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,8 +19,18 @@ const router = createRouter({
     },
     {
       path: '/register',
-      name: 'register.index',
-      component: RegisterIndexView,
+      children: [
+        {
+          path: 'student',
+          name: 'register.student',
+          component: RegisterStudentView,
+        },
+        {
+          path: 'dpl',
+          name: 'register.dpl',
+          component: RegisterDplView,
+        },
+      ],
     },
   ],
 })

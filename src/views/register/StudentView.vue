@@ -14,7 +14,7 @@ import { Error } from '@/utils/error'
 interface Fetch {
   statusCode: number
   message: string
-  data: Register
+  data: RegisterStudent
 }
 
 interface Form {
@@ -24,7 +24,7 @@ interface Form {
   nim: string
 }
 
-interface Register {
+interface RegisterStudent {
   id: number
   email: string
   name: string
@@ -52,8 +52,8 @@ const form: Form = reactive({
 const send = async () => {
   try {
     isLoading.value = true
-    const result: AxiosResponse<Fetch> = await api.post('register', {
-      nim: parseInt(form.nim),
+    const result: AxiosResponse<Fetch> = await api.post('register/student', {
+      nim: parseInt(form.nim as string),
       name: form.name,
       email: form.email,
       password: form.password,
@@ -77,7 +77,7 @@ const send = async () => {
 }
 </script>
 <template>
-  <GuestLayout>
+  <GuestLayout :title="'REGISTER STUDENT'">
     <form @submit.prevent="send()" class="space-y-4">
       <div>
         <InputLabel>name</InputLabel>
