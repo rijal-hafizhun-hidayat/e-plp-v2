@@ -21,7 +21,7 @@ interface Form {
   name: string
   email: string
   password: string
-  nim: string
+  nim: number
 }
 
 interface Register {
@@ -43,7 +43,7 @@ const router = useRouter()
 const validation: Ref<Validation | null> = ref(null)
 const isLoading: Ref<boolean> = ref(false)
 const form: Form = reactive({
-  nim: '',
+  nim: 0,
   name: '',
   email: '',
   password: '',
@@ -53,7 +53,7 @@ const send = async () => {
   try {
     isLoading.value = true
     const result: AxiosResponse<Fetch> = await api.post('register', {
-      nim: parseInt(form.nim),
+      nim: form.nim,
       name: form.name,
       email: form.email,
       password: form.password,
