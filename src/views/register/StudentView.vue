@@ -14,17 +14,17 @@ import { Error } from '@/utils/error'
 interface Fetch {
   statusCode: number
   message: string
-  data: Register
+  data: RegisterStudent
 }
 
 interface Form {
   name: string
   email: string
   password: string
-  nim: number
+  nim: string
 }
 
-interface Register {
+interface RegisterStudent {
   id: number
   email: string
   name: string
@@ -43,7 +43,7 @@ const router = useRouter()
 const validation: Ref<Validation | null> = ref(null)
 const isLoading: Ref<boolean> = ref(false)
 const form: Form = reactive({
-  nim: 0,
+  nim: '',
   name: '',
   email: '',
   password: '',
@@ -52,8 +52,8 @@ const form: Form = reactive({
 const send = async () => {
   try {
     isLoading.value = true
-    const result: AxiosResponse<Fetch> = await api.post('register', {
-      nim: form.nim,
+    const result: AxiosResponse<Fetch> = await api.post('register/student', {
+      nim: parseInt(form.nim as string),
       name: form.name,
       email: form.email,
       password: form.password,

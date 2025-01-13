@@ -21,7 +21,7 @@ const router = createRouter({
       path: '/register',
       children: [
         {
-          path: '',
+          path: 'student',
           name: 'register.student',
           component: RegisterStudentView,
         },
