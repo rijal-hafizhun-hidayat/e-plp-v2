@@ -74,7 +74,7 @@ const send = async () => {
 }
 </script>
 <template>
-  <GuestLayout>
+  <GuestLayout :title="'REGISTER DPL'">
     <form @submit.prevent="send()" class="space-y-4">
       <div>
         <InputLabel>name</InputLabel>
