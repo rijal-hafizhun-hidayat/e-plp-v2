@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import ApplicationLogo from '@/components/base/ApplicationLogo.vue'
 import Dropdown from '@/components/base/Dropdown.vue'
+import { useAuthStore } from '@/stores/auth'
 import { ref, type Ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+const authStore = useAuthStore()
 const showingNavigationDropdown: Ref<boolean> = ref(false)
 const router = useRouter()
 const logout = () => {
-  //authStore.logout()
+  authStore.logout()
   return router.push({
     name: 'login.index',
   })
