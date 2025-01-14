@@ -26,7 +26,6 @@ interface RegisterDpl {
 }
 interface Validation {
   statusCode: number
-  message: string
   errors: Record<string, string[]>
 }
 interface Form {
